@@ -1,0 +1,15 @@
+T__0=1
+ATTRIBUTENUMERIC=2
+ATTRIBUTESTRING=3
+UNION=4
+GREATERTHAN=5
+CONTAINS=6
+INT=7
+SEARCH=8
+WS=9
+'Si'=1
+'la presión arterial del usuario'=2
+'el nombre del usuario'=3
+' y '=4
+'es mayor que'=5
+'contiene'=6
