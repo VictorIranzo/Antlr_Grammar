@@ -1,19 +1,38 @@
-﻿using Antlr4.Runtime;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class Program
+namespace TestGrammar
 {
-    private static void Main(string[] args)
+    internal class Program
     {
-        //// "Si la presión arterial del usuario es mayor que 50 y el nombre del usuario contiene \"Pepe\".
-        AntlrInputStream stream = new AntlrInputStream("r hello pato");
-        GrammarLexer lexer = new GrammarLexer(stream);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        private static void Main(string[] args)
+        {
+            Process process = new Process();
 
-        GrammarParser parser = new GrammarParser(tokens);
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            process.StartInfo.CreateNoWindow = false;
+            process.StartInfo.FileName = "java";
+
+            string arguments = string.Empty;
+            args.ToList().ForEach(a => arguments += " " + a);
+
+            process.StartInfo.Arguments = "-cp ..\\..\\..\\antlr-4.7.1-complete.jar org.antlr.v4.gui.TestRig" + arguments;
+            process.Start();
+
+            Console.WriteLine(process.StandardOutput.ReadToEnd());
+            Console.WriteLine(process.StandardError.ReadToEnd());
+
+            process.WaitForExit();
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+        }
     }
 }
