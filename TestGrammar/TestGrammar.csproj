@@ -51,5 +51,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BuildGrammar\BuildGrammar.csproj">
+      <Project>{b7e5005a-98a2-4e1e-837b-ff490a0b9c1f}</Project>
+      <Name>BuildGrammar</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
