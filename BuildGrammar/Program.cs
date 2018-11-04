@@ -19,8 +19,11 @@ namespace BuildGrammar
             process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             process.StartInfo.CreateNoWindow = false;
             process.StartInfo.FileName = "java";
-            process.StartInfo.Arguments = "-jar D:\\RulesDesigner\\Antlr\\antlr-4.7.1-complete.jar " + args[0] + " -visitor -Dlanguage=CSharp -package " + args[1];
 
+            string arguments = string.Empty;
+            args.ToList().ForEach(a => arguments += " " + a);
+
+            process.StartInfo.Arguments = "-jar ..\\..\\..\\antlr-4.7.1-complete.jar" + arguments;
             process.Start();
 
             Console.WriteLine(process.StandardOutput.ReadToEnd());
