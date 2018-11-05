@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from D:\RulesDesigner\Antlr\Antlr.Grammar\Antlr.Grammar\Grammar.g4 by ANTLR 4.7.1
+// Generated from D:\Antlr_Grammar\Antlr.Grammar\Grammar.g4 by ANTLR 4.7.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -60,7 +60,7 @@ public partial class GrammarLexer : Lexer {
 	}
 
 	private static readonly string[] _LiteralNames = {
-		null, "'Si'", "'la presi\u00F3n arterial del usuario'", "'el nombre del usuario'", 
+		null, "'Si'", "'la presion arterial del usuario'", "'el nombre del usuario'", 
 		"' y '", "'es mayor que'", "'contiene'"
 	};
 	private static readonly string[] _SymbolicNames = {
@@ -143,7 +143,7 @@ public partial class GrammarLexer : Lexer {
 		'\x2', '\x1E', '\x1F', '\a', '\"', '\x2', '\x2', '\x1F', ' ', '\a', 'r', 
 		'\x2', '\x2', ' ', '!', '\a', 't', '\x2', '\x2', '!', '\"', '\a', 'g', 
 		'\x2', '\x2', '\"', '#', '\a', 'u', '\x2', '\x2', '#', '$', '\a', 'k', 
-		'\x2', '\x2', '$', '%', '\a', '\xF5', '\x2', '\x2', '%', '&', '\a', 'p', 
+		'\x2', '\x2', '$', '%', '\a', 'q', '\x2', '\x2', '%', '&', '\a', 'p', 
 		'\x2', '\x2', '&', '\'', '\a', '\"', '\x2', '\x2', '\'', '(', '\a', '\x63', 
 		'\x2', '\x2', '(', ')', '\a', 't', '\x2', '\x2', ')', '*', '\a', 'v', 
 		'\x2', '\x2', '*', '+', '\a', 'g', '\x2', '\x2', '+', ',', '\a', 't', 
@@ -185,8 +185,8 @@ public partial class GrammarLexer : Lexer {
 		'\x2', 'o', 'm', '\x3', '\x2', '\x2', '\x2', 'o', 'p', '\x3', '\x2', '\x2', 
 		'\x2', 'p', '\x10', '\x3', '\x2', '\x2', '\x2', 'q', 'r', '\t', '\x2', 
 		'\x2', '\x2', 'r', '\x12', '\x3', '\x2', '\x2', '\x2', 's', 't', '\a', 
-		'$', '\x2', '\x2', 't', 'u', '\x5', '\x15', '\v', '\x2', 'u', 'v', '\a', 
-		'$', '\x2', '\x2', 'v', '\x14', '\x3', '\x2', '\x2', '\x2', 'w', 'y', 
+		'%', '\x2', '\x2', 't', 'u', '\x5', '\x15', '\v', '\x2', 'u', 'v', '\a', 
+		'%', '\x2', '\x2', 'v', '\x14', '\x3', '\x2', '\x2', '\x2', 'w', 'y', 
 		'\t', '\x3', '\x2', '\x2', 'x', 'w', '\x3', '\x2', '\x2', '\x2', 'y', 
 		'z', '\x3', '\x2', '\x2', '\x2', 'z', 'x', '\x3', '\x2', '\x2', '\x2', 
 		'z', '{', '\x3', '\x2', '\x2', '\x2', '{', '\x16', '\x3', '\x2', '\x2', 

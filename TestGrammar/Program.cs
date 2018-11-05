@@ -84,6 +84,8 @@ namespace TestGrammar
             // 3. Invoke TestRig utility.
             InvokeTestRig(args);
 
+            System.Threading.Thread.Sleep(5000);
+
             // 4. Delete java and class files.
             DeleteFiles(args[0]);
         }

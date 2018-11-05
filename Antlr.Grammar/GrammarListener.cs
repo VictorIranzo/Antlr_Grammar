@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from D:\RulesDesigner\Antlr\Antlr.Grammar\Antlr.Grammar\Grammar.g4 by ANTLR 4.7.1
+// Generated from D:\Antlr_Grammar\Antlr.Grammar\Grammar.g4 by ANTLR 4.7.1
 
 // Unreachable code detected
 #pragma warning disable 0162

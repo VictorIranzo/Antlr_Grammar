@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from D:\RulesDesigner\Antlr\Antlr.Grammar\Antlr.Grammar\Grammar.g4 by ANTLR 4.7.1
+// Generated from D:\Antlr_Grammar\Antlr.Grammar\Grammar.g4 by ANTLR 4.7.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -46,7 +46,7 @@ public partial class GrammarParser : Parser {
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'Si'", "'la presi\u00F3n arterial del usuario'", "'el nombre del usuario'", 
+		null, "'Si'", "'la presion arterial del usuario'", "'el nombre del usuario'", 
 		"' y '", "'es mayor que'", "'contiene'"
 	};
 	private static readonly string[] _SymbolicNames = {
@@ -101,11 +101,6 @@ public partial class GrammarParser : Parser {
 			IGrammarListener typedListener = listener as IGrammarListener;
 			if (typedListener != null) typedListener.ExitRegla(this);
 		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitRegla(this);
-			else return visitor.VisitChildren(this);
-		}
 	}
 
 	[RuleVersion(0)]
@@ -156,11 +151,6 @@ public partial class GrammarParser : Parser {
 		public override void ExitRule(IParseTreeListener listener) {
 			IGrammarListener typedListener = listener as IGrammarListener;
 			if (typedListener != null) typedListener.ExitCondicion(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCondicion(this);
-			else return visitor.VisitChildren(this);
 		}
 	}
 
