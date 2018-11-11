@@ -51,5 +51,65 @@ public interface IGrammarListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitCondicion([NotNull] GrammarParser.CondicionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.attributeNumeric"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAttributeNumeric([NotNull] GrammarParser.AttributeNumericContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.attributeNumeric"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAttributeNumeric([NotNull] GrammarParser.AttributeNumericContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.attributeString"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAttributeString([NotNull] GrammarParser.AttributeStringContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.attributeString"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAttributeString([NotNull] GrammarParser.AttributeStringContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.attributeBoolean"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAttributeBoolean([NotNull] GrammarParser.AttributeBooleanContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.attributeBoolean"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAttributeBoolean([NotNull] GrammarParser.AttributeBooleanContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.connector"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterConnector([NotNull] GrammarParser.ConnectorContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.connector"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitConnector([NotNull] GrammarParser.ConnectorContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.comparsionNumeric"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterComparsionNumeric([NotNull] GrammarParser.ComparsionNumericContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.comparsionNumeric"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitComparsionNumeric([NotNull] GrammarParser.ComparsionNumericContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.comparisonString"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterComparisonString([NotNull] GrammarParser.ComparisonStringContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.comparisonString"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitComparisonString([NotNull] GrammarParser.ComparisonStringContext context);
 }
 } // namespace Antlr.Grammar

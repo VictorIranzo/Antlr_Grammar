@@ -37,21 +37,27 @@ public partial class GrammarParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		T__0=1, ATTRIBUTENUMERIC=2, ATTRIBUTESTRING=3, UNION=4, GREATERTHAN=5, 
-		CONTAINS=6, INT=7, SEARCH=8, WS=9;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, INT=17, 
+		SEARCH=18, WS=19;
 	public const int
-		RULE_regla = 0, RULE_condicion = 1;
+		RULE_regla = 0, RULE_condicion = 1, RULE_attributeNumeric = 2, RULE_attributeString = 3, 
+		RULE_attributeBoolean = 4, RULE_connector = 5, RULE_comparsionNumeric = 6, 
+		RULE_comparisonString = 7;
 	public static readonly string[] ruleNames = {
-		"regla", "condicion"
+		"regla", "condicion", "attributeNumeric", "attributeString", "attributeBoolean", 
+		"connector", "comparsionNumeric", "comparisonString"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'Si'", "'la presion arterial del usuario'", "'el nombre del usuario'", 
-		"' y '", "'es mayor que'", "'contiene'"
+		null, "'Si'", "'no'", "'la presion arterial del usuario'", "'la edad del usuario'", 
+		"'el nombre del usuario'", "'la direcci\u00F3n del usuario'", "'es vegetariano'", 
+		"'duerme solo'", "' y '", "' o '", "'es mayor que'", "'es igual a'", "'es menor que'", 
+		"'contiene'", "'empieza por'", "'termina en'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, null, "ATTRIBUTENUMERIC", "ATTRIBUTESTRING", "UNION", "GREATERTHAN", 
-		"CONTAINS", "INT", "SEARCH", "WS"
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, "INT", "SEARCH", "WS"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -110,8 +116,8 @@ public partial class GrammarParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 4; Match(T__0);
-			State = 5; condicion(0);
+			State = 16; Match(T__0);
+			State = 17; condicion(0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -126,19 +132,32 @@ public partial class GrammarParser : Parser {
 	}
 
 	public partial class CondicionContext : ParserRuleContext {
-		public ITerminalNode ATTRIBUTESTRING() { return GetToken(GrammarParser.ATTRIBUTESTRING, 0); }
-		public ITerminalNode CONTAINS() { return GetToken(GrammarParser.CONTAINS, 0); }
+		public AttributeStringContext attributeString() {
+			return GetRuleContext<AttributeStringContext>(0);
+		}
+		public ComparisonStringContext comparisonString() {
+			return GetRuleContext<ComparisonStringContext>(0);
+		}
 		public ITerminalNode SEARCH() { return GetToken(GrammarParser.SEARCH, 0); }
-		public ITerminalNode ATTRIBUTENUMERIC() { return GetToken(GrammarParser.ATTRIBUTENUMERIC, 0); }
-		public ITerminalNode GREATERTHAN() { return GetToken(GrammarParser.GREATERTHAN, 0); }
+		public AttributeNumericContext attributeNumeric() {
+			return GetRuleContext<AttributeNumericContext>(0);
+		}
+		public ComparsionNumericContext comparsionNumeric() {
+			return GetRuleContext<ComparsionNumericContext>(0);
+		}
 		public ITerminalNode INT() { return GetToken(GrammarParser.INT, 0); }
+		public AttributeBooleanContext attributeBoolean() {
+			return GetRuleContext<AttributeBooleanContext>(0);
+		}
 		public CondicionContext[] condicion() {
 			return GetRuleContexts<CondicionContext>();
 		}
 		public CondicionContext condicion(int i) {
 			return GetRuleContext<CondicionContext>(i);
 		}
-		public ITerminalNode UNION() { return GetToken(GrammarParser.UNION, 0); }
+		public ConnectorContext connector() {
+			return GetRuleContext<ConnectorContext>(0);
+		}
 		public CondicionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -170,28 +189,42 @@ public partial class GrammarParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 14;
+			State = 31;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case ATTRIBUTESTRING:
+			case T__4:
+			case T__5:
 				{
-				State = 8; Match(ATTRIBUTESTRING);
-				State = 9; Match(CONTAINS);
-				State = 10; Match(SEARCH);
+				State = 20; attributeString();
+				State = 21; comparisonString();
+				State = 22; Match(SEARCH);
 				}
 				break;
-			case ATTRIBUTENUMERIC:
+			case T__2:
+			case T__3:
 				{
-				State = 11; Match(ATTRIBUTENUMERIC);
-				State = 12; Match(GREATERTHAN);
-				State = 13; Match(INT);
+				State = 24; attributeNumeric();
+				State = 25; comparsionNumeric();
+				State = 26; Match(INT);
+				}
+				break;
+			case T__6:
+			case T__7:
+				{
+				State = 28; attributeBoolean();
+				}
+				break;
+			case T__1:
+				{
+				State = 29; Match(T__1);
+				State = 30; attributeBoolean();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			Context.Stop = TokenStream.LT(-1);
-			State = 21;
+			State = 39;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,1,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
@@ -203,14 +236,14 @@ public partial class GrammarParser : Parser {
 					{
 					_localctx = new CondicionContext(_parentctx, _parentState);
 					PushNewRecursionContext(_localctx, _startState, RULE_condicion);
-					State = 16;
-					if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
-					State = 17; Match(UNION);
-					State = 18; condicion(4);
+					State = 33;
+					if (!(Precpred(Context, 5))) throw new FailedPredicateException(this, "Precpred(Context, 5)");
+					State = 34; connector();
+					State = 35; condicion(6);
 					}
 					} 
 				}
-				State = 23;
+				State = 41;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,1,Context);
 			}
@@ -227,6 +260,282 @@ public partial class GrammarParser : Parser {
 		return _localctx;
 	}
 
+	public partial class AttributeNumericContext : ParserRuleContext {
+		public AttributeNumericContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_attributeNumeric; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.EnterAttributeNumeric(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.ExitAttributeNumeric(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public AttributeNumericContext attributeNumeric() {
+		AttributeNumericContext _localctx = new AttributeNumericContext(Context, State);
+		EnterRule(_localctx, 4, RULE_attributeNumeric);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 42;
+			_la = TokenStream.LA(1);
+			if ( !(_la==T__2 || _la==T__3) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class AttributeStringContext : ParserRuleContext {
+		public AttributeStringContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_attributeString; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.EnterAttributeString(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.ExitAttributeString(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public AttributeStringContext attributeString() {
+		AttributeStringContext _localctx = new AttributeStringContext(Context, State);
+		EnterRule(_localctx, 6, RULE_attributeString);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 44;
+			_la = TokenStream.LA(1);
+			if ( !(_la==T__4 || _la==T__5) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class AttributeBooleanContext : ParserRuleContext {
+		public AttributeBooleanContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_attributeBoolean; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.EnterAttributeBoolean(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.ExitAttributeBoolean(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public AttributeBooleanContext attributeBoolean() {
+		AttributeBooleanContext _localctx = new AttributeBooleanContext(Context, State);
+		EnterRule(_localctx, 8, RULE_attributeBoolean);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 46;
+			_la = TokenStream.LA(1);
+			if ( !(_la==T__6 || _la==T__7) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ConnectorContext : ParserRuleContext {
+		public ConnectorContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_connector; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.EnterConnector(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.ExitConnector(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ConnectorContext connector() {
+		ConnectorContext _localctx = new ConnectorContext(Context, State);
+		EnterRule(_localctx, 10, RULE_connector);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 48;
+			_la = TokenStream.LA(1);
+			if ( !(_la==T__8 || _la==T__9) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ComparsionNumericContext : ParserRuleContext {
+		public ComparsionNumericContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_comparsionNumeric; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.EnterComparsionNumeric(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.ExitComparsionNumeric(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ComparsionNumericContext comparsionNumeric() {
+		ComparsionNumericContext _localctx = new ComparsionNumericContext(Context, State);
+		EnterRule(_localctx, 12, RULE_comparsionNumeric);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 50;
+			_la = TokenStream.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__10) | (1L << T__11) | (1L << T__12))) != 0)) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ComparisonStringContext : ParserRuleContext {
+		public ComparisonStringContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_comparisonString; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.EnterComparisonString(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.ExitComparisonString(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ComparisonStringContext comparisonString() {
+		ComparisonStringContext _localctx = new ComparisonStringContext(Context, State);
+		EnterRule(_localctx, 14, RULE_comparisonString);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 52;
+			_la = TokenStream.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__13) | (1L << T__14) | (1L << T__15))) != 0)) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
 	public override bool Sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
 		case 1: return condicion_sempred((CondicionContext)_localctx, predIndex);
@@ -235,34 +544,57 @@ public partial class GrammarParser : Parser {
 	}
 	private bool condicion_sempred(CondicionContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return Precpred(Context, 3);
+		case 0: return Precpred(Context, 5);
 		}
 		return true;
 	}
 
 	private static char[] _serializedATN = {
 		'\x3', '\x608B', '\xA72A', '\x8133', '\xB9ED', '\x417C', '\x3BE7', '\x7786', 
-		'\x5964', '\x3', '\v', '\x1B', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
-		'\t', '\x3', '\x3', '\x2', '\x3', '\x2', '\x3', '\x2', '\x3', '\x3', '\x3', 
+		'\x5964', '\x3', '\x15', '\x39', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
+		'\t', '\x3', '\x4', '\x4', '\t', '\x4', '\x4', '\x5', '\t', '\x5', '\x4', 
+		'\x6', '\t', '\x6', '\x4', '\a', '\t', '\a', '\x4', '\b', '\t', '\b', 
+		'\x4', '\t', '\t', '\t', '\x3', '\x2', '\x3', '\x2', '\x3', '\x2', '\x3', 
 		'\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', 
-		'\x3', '\x5', '\x3', '\x11', '\n', '\x3', '\x3', '\x3', '\x3', '\x3', 
-		'\x3', '\x3', '\a', '\x3', '\x16', '\n', '\x3', '\f', '\x3', '\xE', '\x3', 
-		'\x19', '\v', '\x3', '\x3', '\x3', '\x2', '\x3', '\x4', '\x4', '\x2', 
-		'\x4', '\x2', '\x2', '\x2', '\x1A', '\x2', '\x6', '\x3', '\x2', '\x2', 
-		'\x2', '\x4', '\x10', '\x3', '\x2', '\x2', '\x2', '\x6', '\a', '\a', '\x3', 
-		'\x2', '\x2', '\a', '\b', '\x5', '\x4', '\x3', '\x2', '\b', '\x3', '\x3', 
-		'\x2', '\x2', '\x2', '\t', '\n', '\b', '\x3', '\x1', '\x2', '\n', '\v', 
-		'\a', '\x5', '\x2', '\x2', '\v', '\f', '\a', '\b', '\x2', '\x2', '\f', 
-		'\x11', '\a', '\n', '\x2', '\x2', '\r', '\xE', '\a', '\x4', '\x2', '\x2', 
-		'\xE', '\xF', '\a', '\a', '\x2', '\x2', '\xF', '\x11', '\a', '\t', '\x2', 
-		'\x2', '\x10', '\t', '\x3', '\x2', '\x2', '\x2', '\x10', '\r', '\x3', 
-		'\x2', '\x2', '\x2', '\x11', '\x17', '\x3', '\x2', '\x2', '\x2', '\x12', 
-		'\x13', '\f', '\x5', '\x2', '\x2', '\x13', '\x14', '\a', '\x6', '\x2', 
-		'\x2', '\x14', '\x16', '\x5', '\x4', '\x3', '\x6', '\x15', '\x12', '\x3', 
-		'\x2', '\x2', '\x2', '\x16', '\x19', '\x3', '\x2', '\x2', '\x2', '\x17', 
-		'\x15', '\x3', '\x2', '\x2', '\x2', '\x17', '\x18', '\x3', '\x2', '\x2', 
-		'\x2', '\x18', '\x5', '\x3', '\x2', '\x2', '\x2', '\x19', '\x17', '\x3', 
-		'\x2', '\x2', '\x2', '\x4', '\x10', '\x17',
+		'\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', 
+		'\x3', '\x3', '\x3', '\x5', '\x3', '\"', '\n', '\x3', '\x3', '\x3', '\x3', 
+		'\x3', '\x3', '\x3', '\x3', '\x3', '\a', '\x3', '(', '\n', '\x3', '\f', 
+		'\x3', '\xE', '\x3', '+', '\v', '\x3', '\x3', '\x4', '\x3', '\x4', '\x3', 
+		'\x5', '\x3', '\x5', '\x3', '\x6', '\x3', '\x6', '\x3', '\a', '\x3', '\a', 
+		'\x3', '\b', '\x3', '\b', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x2', 
+		'\x3', '\x4', '\n', '\x2', '\x4', '\x6', '\b', '\n', '\f', '\xE', '\x10', 
+		'\x2', '\b', '\x3', '\x2', '\x5', '\x6', '\x3', '\x2', '\a', '\b', '\x3', 
+		'\x2', '\t', '\n', '\x3', '\x2', '\v', '\f', '\x3', '\x2', '\r', '\xF', 
+		'\x3', '\x2', '\x10', '\x12', '\x2', '\x34', '\x2', '\x12', '\x3', '\x2', 
+		'\x2', '\x2', '\x4', '!', '\x3', '\x2', '\x2', '\x2', '\x6', ',', '\x3', 
+		'\x2', '\x2', '\x2', '\b', '.', '\x3', '\x2', '\x2', '\x2', '\n', '\x30', 
+		'\x3', '\x2', '\x2', '\x2', '\f', '\x32', '\x3', '\x2', '\x2', '\x2', 
+		'\xE', '\x34', '\x3', '\x2', '\x2', '\x2', '\x10', '\x36', '\x3', '\x2', 
+		'\x2', '\x2', '\x12', '\x13', '\a', '\x3', '\x2', '\x2', '\x13', '\x14', 
+		'\x5', '\x4', '\x3', '\x2', '\x14', '\x3', '\x3', '\x2', '\x2', '\x2', 
+		'\x15', '\x16', '\b', '\x3', '\x1', '\x2', '\x16', '\x17', '\x5', '\b', 
+		'\x5', '\x2', '\x17', '\x18', '\x5', '\x10', '\t', '\x2', '\x18', '\x19', 
+		'\a', '\x14', '\x2', '\x2', '\x19', '\"', '\x3', '\x2', '\x2', '\x2', 
+		'\x1A', '\x1B', '\x5', '\x6', '\x4', '\x2', '\x1B', '\x1C', '\x5', '\xE', 
+		'\b', '\x2', '\x1C', '\x1D', '\a', '\x13', '\x2', '\x2', '\x1D', '\"', 
+		'\x3', '\x2', '\x2', '\x2', '\x1E', '\"', '\x5', '\n', '\x6', '\x2', '\x1F', 
+		' ', '\a', '\x4', '\x2', '\x2', ' ', '\"', '\x5', '\n', '\x6', '\x2', 
+		'!', '\x15', '\x3', '\x2', '\x2', '\x2', '!', '\x1A', '\x3', '\x2', '\x2', 
+		'\x2', '!', '\x1E', '\x3', '\x2', '\x2', '\x2', '!', '\x1F', '\x3', '\x2', 
+		'\x2', '\x2', '\"', ')', '\x3', '\x2', '\x2', '\x2', '#', '$', '\f', '\a', 
+		'\x2', '\x2', '$', '%', '\x5', '\f', '\a', '\x2', '%', '&', '\x5', '\x4', 
+		'\x3', '\b', '&', '(', '\x3', '\x2', '\x2', '\x2', '\'', '#', '\x3', '\x2', 
+		'\x2', '\x2', '(', '+', '\x3', '\x2', '\x2', '\x2', ')', '\'', '\x3', 
+		'\x2', '\x2', '\x2', ')', '*', '\x3', '\x2', '\x2', '\x2', '*', '\x5', 
+		'\x3', '\x2', '\x2', '\x2', '+', ')', '\x3', '\x2', '\x2', '\x2', ',', 
+		'-', '\t', '\x2', '\x2', '\x2', '-', '\a', '\x3', '\x2', '\x2', '\x2', 
+		'.', '/', '\t', '\x3', '\x2', '\x2', '/', '\t', '\x3', '\x2', '\x2', '\x2', 
+		'\x30', '\x31', '\t', '\x4', '\x2', '\x2', '\x31', '\v', '\x3', '\x2', 
+		'\x2', '\x2', '\x32', '\x33', '\t', '\x5', '\x2', '\x2', '\x33', '\r', 
+		'\x3', '\x2', '\x2', '\x2', '\x34', '\x35', '\t', '\x6', '\x2', '\x2', 
+		'\x35', '\xF', '\x3', '\x2', '\x2', '\x2', '\x36', '\x37', '\t', '\a', 
+		'\x2', '\x2', '\x37', '\x11', '\x3', '\x2', '\x2', '\x2', '\x4', '!', 
+		')',
 	};
 
 	public static readonly ATN _ATN =

@@ -6,48 +6,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JavaUtilities;
 
 namespace TestGrammar
 {
     internal class Program
     {
-        private static void CompileJavaCode(string pathToGrammar)
-        {
-            Process process = new Process();
-
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.RedirectStandardError = true;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-            process.StartInfo.CreateNoWindow = false;
-            process.StartInfo.FileName = "javac";
-
-            string compilePath = " " + pathToGrammar.Substring(0, pathToGrammar.LastIndexOf('\\') + 1) + "*.java";
-
-            process.StartInfo.Arguments = "-cp ..\\..\\..\\antlr-4.7.1-complete.jar" + compilePath;
-            process.Start();
-
-            Console.WriteLine(process.StandardOutput.ReadToEnd());
-            Console.WriteLine(process.StandardError.ReadToEnd());
-
-            process.WaitForExit();
-        }
-
-        private static void DeleteFiles(string pathToGrammar)
-        {
-            DirectoryInfo grammarDirectory = new DirectoryInfo(pathToGrammar.Substring(0, pathToGrammar.LastIndexOf('\\') + 1));
-
-            foreach (FileInfo javaFile in grammarDirectory.EnumerateFiles("*.java"))
-            {
-                javaFile.Delete();
-            }
-
-            foreach (FileInfo classFile in grammarDirectory.EnumerateFiles("*.class"))
-            {
-                classFile.Delete();
-            }
-        }
-
         private static void InvokeTestRig(string[] args)
         {
             Process process = new Process();
@@ -79,7 +43,7 @@ namespace TestGrammar
             GrammarBuilder.BuildGrammar(new string[] { args[0] });
 
             // 2. Compiles the generated code.
-            CompileJavaCode(args[0]);
+            JavaCompiler.CompileJavaCode(args[0].Substring(0, args[0].LastIndexOf('\\') + 1));
 
             // 3. Invoke TestRig utility.
             InvokeTestRig(args);
@@ -87,7 +51,7 @@ namespace TestGrammar
             System.Threading.Thread.Sleep(5000);
 
             // 4. Delete java and class files.
-            DeleteFiles(args[0]);
+            JavaStepsDeleter.DeleteFiles(args[0].Substring(0, args[0].LastIndexOf('\\') + 1));
         }
     }
 }

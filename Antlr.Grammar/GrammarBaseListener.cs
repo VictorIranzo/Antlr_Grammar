@@ -59,6 +59,78 @@ public partial class GrammarBaseListener : IGrammarListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitCondicion([NotNull] GrammarParser.CondicionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.attributeNumeric"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAttributeNumeric([NotNull] GrammarParser.AttributeNumericContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.attributeNumeric"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAttributeNumeric([NotNull] GrammarParser.AttributeNumericContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.attributeString"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAttributeString([NotNull] GrammarParser.AttributeStringContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.attributeString"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAttributeString([NotNull] GrammarParser.AttributeStringContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.attributeBoolean"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAttributeBoolean([NotNull] GrammarParser.AttributeBooleanContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.attributeBoolean"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAttributeBoolean([NotNull] GrammarParser.AttributeBooleanContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.connector"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConnector([NotNull] GrammarParser.ConnectorContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.connector"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConnector([NotNull] GrammarParser.ConnectorContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.comparsionNumeric"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterComparsionNumeric([NotNull] GrammarParser.ComparsionNumericContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.comparsionNumeric"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitComparsionNumeric([NotNull] GrammarParser.ComparsionNumericContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="GrammarParser.comparisonString"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterComparisonString([NotNull] GrammarParser.ComparisonStringContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="GrammarParser.comparisonString"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitComparisonString([NotNull] GrammarParser.ComparisonStringContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>
