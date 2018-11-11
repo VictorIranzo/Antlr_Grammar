@@ -16,7 +16,7 @@ namespace IntellisenseTest
             JavaCompiler.CompileJavaCode(args[0].Substring(0, args[0].LastIndexOf('\\') + 1));
 
             // 3. Invoke suggester.
-            Suggest(args[0], args[1]);
+            Suggest(args[0].Substring(0, args[0].LastIndexOf('\\') + 1), args[0].Substring(args[0].LastIndexOf('\\') + 1).Replace(".g4", string.Empty), args[1]);
 
             // 4. Delete java and class files.
             JavaStepsDeleter.DeleteFiles(args[0].Substring(0, args[0].LastIndexOf('\\') + 1));
@@ -25,7 +25,7 @@ namespace IntellisenseTest
             Console.ReadKey();
         }
 
-        private static void Suggest(string grammarName, string sentence)
+        private static void Suggest(string grammarDirectory, string grammarName, string sentence)
         {
             Process process = new Process();
 
@@ -37,11 +37,12 @@ namespace IntellisenseTest
             process.StartInfo.CreateNoWindow = false;
             process.StartInfo.FileName = "java";
 
-            process.StartInfo.Arguments = "-jar ..\\..\\..\\antlr4-autosuggest.jar " + grammarName.Replace(".g4", string.Empty) + " \"" + sentence + "\"";
+            string urlToFolder = "file:" + grammarDirectory;
+
+            process.StartInfo.Arguments = "-jar ..\\..\\..\\antlr4-autosuggest.jar " + urlToFolder + " " + grammarName + " \"" + sentence + "\"";
             process.Start();
 
             Console.WriteLine(process.StandardOutput.ReadToEnd());
-            Console.WriteLine(process.StandardError.ReadToEnd());
 
             process.WaitForExit();
         }
