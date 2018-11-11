@@ -45,6 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoComplete\AntlrAutoCompletionSuggester.cs" />
+    <Compile Include="AutoComplete\AutoCompletionSuggester.cs" />
+    <Compile Include="AutoComplete\EditorContext.cs" />
+    <Compile Include="AutoComplete\EditorContextImplementation.cs" />
+    <Compile Include="AutoComplete\ListTokenSourceExtensions.cs" />
+    <Compile Include="AutoComplete\ParserStack.cs" />
+    <Compile Include="AutoComplete\TokenType.cs" />
     <Compile Include="Grammar.g4.lexer.cs">
       <DependentUpon>Grammar.g4</DependentUpon>
     </Compile>
