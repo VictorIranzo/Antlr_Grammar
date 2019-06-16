@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace Core
 {
     public class SimpleCondition : Condition
     {
-        public object Field { get; set; }
+        public PropertyInfo Field { get; set; }
 
         public Comparison Comparison { get; set; }
 
