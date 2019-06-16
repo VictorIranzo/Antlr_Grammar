@@ -25,9 +25,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrammarBuilder", "GrammarBuilder\GrammarBuilder.csproj", "{7F1771FE-5E64-4393-9B69-FC021A8B864F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrammarSuggester", "GrammarSuggester\GrammarSuggester.csproj", "{1F71F4B6-8644-400F-BC2C-958C4E6C0EDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrammarSuggester", "GrammarSuggester\GrammarSuggester.csproj", "{1F71F4B6-8644-400F-BC2C-958C4E6C0EDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserGrammar", "Grammars\UserGrammar\UserGrammar.csproj", "{ADECA969-B9CC-49E1-8548-E7CFFB36F361}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserGrammar", "Grammars\UserGrammar\UserGrammar.csproj", "{ADECA969-B9CC-49E1-8548-E7CFFB36F361}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4405739D-BADD-47FB-B6F5-22920C77D40A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{DC825327-00F6-4FA4-8C44-32A4D897EAB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +75,10 @@ Global
 		{ADECA969-B9CC-49E1-8548-E7CFFB36F361}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADECA969-B9CC-49E1-8548-E7CFFB36F361}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADECA969-B9CC-49E1-8548-E7CFFB36F361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC825327-00F6-4FA4-8C44-32A4D897EAB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC825327-00F6-4FA4-8C44-32A4D897EAB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC825327-00F6-4FA4-8C44-32A4D897EAB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC825327-00F6-4FA4-8C44-32A4D897EAB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +93,7 @@ Global
 		{7F1771FE-5E64-4393-9B69-FC021A8B864F} = {9FD6540C-B482-47F7-8EDB-A0D92FB8B795}
 		{1F71F4B6-8644-400F-BC2C-958C4E6C0EDD} = {9FD6540C-B482-47F7-8EDB-A0D92FB8B795}
 		{ADECA969-B9CC-49E1-8548-E7CFFB36F361} = {052C53F6-5226-4A64-8D0C-79CE58327B1B}
+		{DC825327-00F6-4FA4-8C44-32A4D897EAB5} = {4405739D-BADD-47FB-B6F5-22920C77D40A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AD3A4FFA-97B2-442F-B276-26772ADDF4DF}
