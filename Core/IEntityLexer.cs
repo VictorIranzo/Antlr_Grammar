@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Core
 {
-    public interface IEntityLexer<TLexer>
-        where TLexer : Lexer
+    public interface IEntityLexer<TEntity>
+        where TEntity : Entity
     {
     }
 }

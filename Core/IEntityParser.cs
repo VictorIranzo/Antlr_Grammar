@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Core
 {
-    public interface IEntityParser<TParser>
-        where TParser : Parser
+    public interface IEntityParser<TEntity>
+        where TEntity : Entity
     {
     }
 }
