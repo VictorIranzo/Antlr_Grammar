@@ -10,7 +10,11 @@
   "profiles": {
     "Generate Java code": {
       "commandName": "Project",
-      "commandLineArgs": "--antlr-jar-path D:\\GitHub\\Antlr_Grammar\\antlr-4.7.1-complete.jar --generate-visitor false --grammar-code-generated-language Java"
+      "commandLineArgs": "--grammar-path D:\\GitHub\\Antlr_Grammar\\Grammars\\UserGrammar\\UserGrammar.g4 --antlr-jar-path D:\\GitHub\\Antlr_Grammar\\antlr-4.7.1-complete.jar --generate-visitor false --grammar-code-generated-language Java"
+    },
+    "Generate CSharp code": {
+      "commandName": "Project",
+      "commandLineArgs": "--grammar-path D:\\GitHub\\Antlr_Grammar\\Grammars\\UserGrammar\\UserGrammar.g4 --antlr-jar-path D:\\GitHub\\Antlr_Grammar\\antlr-4.7.1-complete.jar --generate-visitor false --grammar-code-generated-language CSharp"
     }
   }
 }

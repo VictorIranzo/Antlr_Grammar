@@ -9,7 +9,7 @@ namespace GrammarBuilder
 {
     public static class GrammarBuilder
     {
-        public static void BuildGrammar(string antlrJarPath, bool generateVisitor, string grammarNamespace, Language grammarCodeGeneratedLanguage)
+        public static void BuildGrammar(string grammarPath, string antlrJarPath, bool generateVisitor, string grammarNamespace, Language grammarCodeGeneratedLanguage)
         {
             Process process = new Process();
 
@@ -32,7 +32,9 @@ namespace GrammarBuilder
                 arguments += " -package=" + grammarNamespace;
             }
 
-            arguments += " -DLanguage=" + grammarCodeGeneratedLanguage.GetLanguageString();
+            arguments += " -Dlanguage=" + grammarCodeGeneratedLanguage.GetLanguageString();
+
+            arguments += " " + grammarPath;
 
             process.StartInfo.Arguments = arguments;
             process.Start();
