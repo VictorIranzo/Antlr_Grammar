@@ -1,4 +1,4 @@
-# SDM_TryToMeet
+# ANTLR_Grammar
 An ANTLR grammar and some other staff to create a desginer for Business Rules.
 
 # Introduction
